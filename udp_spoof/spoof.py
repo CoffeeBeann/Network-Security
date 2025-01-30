@@ -33,3 +33,6 @@ ip_pkt = ip_header + ip_payload
 addr = ("10.0.2.15", 9000)
 
 
+# Send packet
+addr = ("10.0.2.15", 9000)
+raw_socket.sendto(ip_pkt, addr)
