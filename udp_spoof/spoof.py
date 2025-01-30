@@ -40,3 +40,6 @@ ip_header += struct.pack(">4B", 192,168,42,8) # src
 ip_header += struct.pack(">4B", 10,0,2,15) # dest (target)
 ip_pkt = ip_header + ip_payload
 
+# Send packet
+addr = ("10.0.2.15", 9000)
+raw_socket.sendto(ip_pkt, addr)
