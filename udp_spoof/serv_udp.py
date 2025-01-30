@@ -7,7 +7,7 @@ import sys
 import select
 
 PORT = 9000
-ADDR = "127.0.0.1"
+ADDR = "10.0.2.15"
 newaddr = ''
 
 # Open and bind socket

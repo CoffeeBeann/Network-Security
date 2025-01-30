@@ -4,16 +4,7 @@ from socket import *
 import struct
 raw_socket = socket(AF_INET, SOCK_RAW, IPPROTO_RAW)
 udp_payload = b"Hello World\n" 
-                  #UDP HEADER#
-#####################################################
-#                        |                          #
-#      #SRC PORT         |           #DST PORT      #
-#------------------------|--------------------------# 
-#      #LENGTH           |           #CHECKSUM      # 
-#                        |                          #
-#####################################################
-# pack srcPort, dstPort, length, & checkSum into header
-# 4 unsigned shorts, because shorts are 2 bytes, similar to hex
+
 # 8 + UDP len to account for header
 udp_header = struct.pack(">4H",12345, 9000, 8 + len(udp_payload), 0)
 ip_payload = udp_header + udp_payload
@@ -39,4 +30,6 @@ ip_header += struct.pack(">BBH", ttl, protocol, checksum)
 ip_header += struct.pack(">4B", 192,168,42,8) # src
 ip_header += struct.pack(">4B", 10,0,2,15) # dest (target)
 ip_pkt = ip_header + ip_payload
+addr = ("10.0.2.15", 9000)
+
 
